@@ -5,9 +5,9 @@
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Tech](https://img.shields.io/badge/tech-Vanilla%20JS-yellow)
 
-**STACKS** est un centre de commande spatial haute précision conçu pour le suivi en temps réel de la Station Spatiale Internationale (ISS) et la surveillance d'autres corps orbitaux majeurs. 
+**STACKS-ISS-TRACKER** est un centre de commande spatial haute précision conçu pour le suivi en temps réel de la Station Spatiale Internationale (ISS) et la surveillance d'autres corps orbitaux majeurs. 
 
-Loin d'être un simple tracker, STACKS transforme des flux de données brutes en une expérience immersive et institutionnelle, mêlant ingénierie logicielle, cartographie dynamique et éducation scientifique.
+Loin d'être un simple tracker, IL transforme des flux de données brutes en une expérience immersive et institutionnelle, mêlant ingénierie logicielle, cartographie dynamique et éducation scientifique.
 
 ---
 
