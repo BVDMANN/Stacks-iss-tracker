@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Stacks - Global Space Command & Orbital Intelligence</title>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist@5.0.0/index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap">
+
+    <!-- Leaflet CSS for Map -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+
+    <!-- Project Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="brand-group">
+            <span class="logo">Stacks</span>
+            <span class="subtitle">Global Space Command Center</span>
+        </div>
+        <div class="header-actions">
+            <button class="lang-switch" id="lang-toggle">EN / FR</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1 class="hero-title" id="t-hero-title">Station Spatiale Internationale</h1>
+        <p class="hero-subtitle" id="t-hero-subtitle">L'avant-poste le plus avancé de l'humanité, en orbite autour de notre monde.</p>
+    </section>
+
+    <main class="main-grid">
+        <div class="map-section">
+            <div id="iss-map"></div>
+            <div class="map-controls">
+                <button class="control-btn" id="btn-geo">📍 MA POSITION</button>
+                <button class="control-btn active" id="btn-follow">🎯 SUIVRE ISS</button>
+            </div>
+        </div>
+
+        <aside class="info-panel">
+            <div class="panel-card">
+                <span class="section-label" id="t-status-label">Télémétrie en Temps Réel</span>
+                <div class="metric-row">
+                    <div class="metric-item">
+                        <span class="metric-label">LATITUDE</span>
+                        <span class="metric-value mono" id="lat">0.000</span><span class="metric-unit">°</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">LONGITUDE</span>
+                        <span class="metric-value mono" id="lon">0.000</span><span class="metric-unit">°</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">ALTITUDE</span>
+                        <span class="metric-value mono" id="alt">0.0</span><span class="metric-unit">km</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">VITESSE</span>
+                        <span class="metric-value mono" id="speed">0.0</span><span class="metric-unit">km/s</span>
+                    </div>
+                </div>
+                <div style="margin-top: 15px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center;">
+                    <span class="metric-label" style="margin:0">Distance</span>
+                    <span class="metric-value mono" id="dist-val" style="font-size: 16px;">---</span>
+                </div>
+                <p style="font-size: 10px; color: var(--color-text-dark); margin-top: 15px; text-align: right;" id="timestamp">Sincronisation... UTC</p>
+            </div>
+
+            <div class="panel-card">
+                <span class="section-label" id="t-pass-label">Observation Prochaine</span>
+                <p class="mono" style="font-weight: 700; color: var(--color-accent);" id="pass-time">--:-- UTC</p>
+                <p style="font-size: 13px; color: var(--color-text-muted);" id="pass-detail">Calcul de position en cours...</p>
+            </div>
+
+            <div class="panel-card" style="border-left-color: var(--color-primary);">
+                <span class="section-label" id="t-mission-label">Dossier Mission</span>
+                <p style="font-size: 14px; font-weight: 600;">ISS Expedition 71</p>
+                <p style="font-size: 12px; color: var(--color-text-muted);">Objectif : Recherche sur la santé humaine et l'astrophysique.</p>
+            </div>
+        </aside>
+    </main>
+
+    <section class="sat-registry">
+        <div class="section-header">
+            <h2 id="t-sat-title">Registres des Satellites Actifs</h2>
+            <p style="color: var(--color-text-muted);">Surveillance en temps réel d'autres corps orbitaux majeurs.</p>
+        </div>
+        <div class="registry-grid" id="sat-grid">
+            <!-- Dynamic Satellites -->
+        </div>
+    </section>
+
+    <section class="academy-section">
+        <div class="section-header">
+            <h2 id="t-hub-title">L'Académie Spatiale</h2>
+            <p style="color: var(--color-text-muted);">Comprendre la science et l'ingénierie derrière l'orbite terrestre.</p>
+        </div>
+        <div class="academy-grid">
+            <div class="academy-card">
+                <h3>Architecture de l'ISS</h3>
+                <p id="t-card-1">L'ISS est un complexe modulaire assemblé dans l'espace. Contrairement à un vaisseau spatial ou une fusée, elle n'a pas de moteur pour rentrer sur Terre. C'est une structure permanente où collaborent les agences NASA, Roscosmos, ESA, JAXA et CSA.</p>
+            </div>
+            <div class="academy-card">
+                <h3>La Microgravité</h3>
+                <p id="t-card-2">La station ne flotte pas dans le vide ; elle est en chute libre perpétuelle autour de la Terre. Cette condition crée la microgravité, permettant d'étudier des phénomènes physiques impossibles sur Terre, comme la cristallisation parfaite de protéines pour la médecine.</p>
+            </div>
+            <div class="academy-card">
+                <h3>Vie et Survie en Orbite</h3>
+                <p id="t-card-3">Maintenir la vie à 400 km d'altitude demande une technologie extrême. Recyclage de 93% de l'eau, protection contre les radiations solaires et exercise physique intensif pour contrer la perte osseuse. Un défi quotidien pour l'endurance humaine.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="missions-section">
+        <div class="section-header">
+            <h2 id="t-feed-title">Registres de Missions</h2>
+            <p style="color: var(--color-text-muted);">Dossiers techniques et analyses d'équipages orbitaux.</p>
+        </div>
+        <div id="mission-list">
+            <!-- Detailed Dossiers -->
+        </div>
+    </section>
+
+    <!-- Satellite Detail Modal -->
+    <div class="sat-modal-overlay" id="sat-modal">
+        <div class="sat-modal-card">
+            <button class="close-sat-modal" id="close-sat">&times;</button>
+            <div class="sat-header">
+                <h2 id="sat-modal-name">SATELLITE NAME</h2>
+                <span class="sat-badge" id="sat-modal-status">ACTIVE</span>
+            </div>
+            <div class="sat-specs-grid">
+                <div class="spec-box">
+                    <span class="spec-label">Opérateur</span>
+                    <span class="spec-val" id="sat-modal-op">---</span>
+                </div>
+                <div class="spec-box">
+                    <span class="spec-label">Lancement</span>
+                    <span class="spec-val" id="sat-modal-date">---</span>
+                </div>
+                <div class="spec-box">
+                    <span class="spec-label">Masse</span>
+                    <span class="spec-val" id="sat-modal-mass">---</span>
+                </div>
+                <div class="spec-box">
+                    <span class="spec-label">Orbite</span>
+                    <span class="spec-val" id="sat-modal-orbit">---</span>
+                </div>
+            </div>
+            <div class="sat-description" id="sat-modal-desc">
+                Description détaillée du satellite...
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Conçu par <span style="color: var(--color-accent); font-weight: 600;">Randy Boulingui</span> | <a href="https://github.com/BVDMANN/Stacks-iss-tracker" target="_blank" style="color: var(--color-accent)">GitHub Repo</a></p>
+        <p style="margin-top: 10px; opacity: 0.5;">© 2026 Stacks Space Portal. Pour toute contribution ou bug, merci de nous contacter via GitHub.</p>
+    </footer>
+
+    <!-- Intro Modal -->
+    <div class="modal-overlay" id="intro-modal">
+        <div class="modal-card">
+            <h2 class="modal-title" id="t-modal-title">Centre de Commandement Orbital</h2>
+            <p class="modal-desc" id="t-modal-desc">
+                L'ISS est le symbole ultime de la coopération internationale. À 28 000 km/h, elle repousse les limites de la science et de la survie humaine.
+                Explorez sa trajectoire en temps réel, accédez aux dossiers de missions et comprenez l'ingénierie qui rend possible l'habitation permanente dans le vide spatial.
+            </p>
+            <button class="cta-button" id="lets-go">Accéder à l'interface</button>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+    <!-- Project Logic -->
+    <script src="script.js"></script>
+</body>
+</html>
