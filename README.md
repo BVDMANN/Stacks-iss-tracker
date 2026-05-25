@@ -79,8 +79,8 @@ Loin d'être un simple tracker, STACKS transforme des flux de données brutes en
 **Randy Boulingui**  
 *Passionné de Systemes informatique .*
 
-Ceci est le premier projet de la série **STACKS** : construire des outils réels, optimiser la performance et automatiser.
+Ceci est le premier projet public de la série **STACKS** : construire des outils réels, optimiser la performance et automatiser.
 
 ---
 
-© 2026 Stacks Space Portal.
+© 2026 Stacks 
